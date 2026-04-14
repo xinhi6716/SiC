@@ -1,0 +1,57 @@
+{
+  "material": "SiC",
+  "updated_at": "2026-04-14T15:20:20",
+  "reason": "initial_bootstrap",
+  "features": [
+    "RF_Power_W",
+    "Process_Time_Min",
+    "RTA_Temperature_C",
+    "Has_RTA"
+  ],
+  "targets": [
+    "Forming_Voltage_V",
+    "Operation_Voltage_V",
+    "Leakage_Current_A",
+    "On_Off_Ratio",
+    "Endurance_Cycles"
+  ],
+  "constraints": [
+    {
+      "target": "On_Off_Ratio",
+      "operator": ">=",
+      "threshold": 5.0,
+      "description": "RRAM memory window lower bound"
+    },
+    {
+      "target": "Operation_Voltage_V",
+      "operator": "<=",
+      "threshold": 3.0,
+      "description": "Low-voltage operation requirement"
+    }
+  ],
+  "model_files": {
+    "Forming_Voltage_V": "Forming_Voltage_V.joblib",
+    "Operation_Voltage_V": "Operation_Voltage_V.joblib",
+    "Leakage_Current_A": "Leakage_Current_A.joblib",
+    "On_Off_Ratio": "On_Off_Ratio.joblib",
+    "Endurance_Cycles": "Endurance_Cycles.joblib"
+  },
+  "feature_ranges": {
+    "RF_Power_W": {
+      "min": 50.0,
+      "max": 75.0
+    },
+    "Process_Time_Min": {
+      "min": 30.0,
+      "max": 120.0
+    },
+    "RTA_Temperature_C": {
+      "min": 25.0,
+      "max": 400.0
+    },
+    "Has_RTA": {
+      "min": 0.0,
+      "max": 1.0
+    }
+  }
+}
