@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RRAM Material AI Lab</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="traffic-spacer" aria-hidden="true"></div>
+
+      <section class="brand-block">
+        <p class="eyebrow">Material Intelligence</p>
+        <h1>RRAM AI Lab</h1>
+        <p class="brand-copy">
+          即時預測、可信區間與製程推薦，整合為一個可操作的材料實驗控制台。
+        </p>
+      </section>
+
+      <section class="panel-section">
+        <label class="control-label" for="materialSelect">材料系統</label>
+        <select id="materialSelect" class="apple-select">
+          <option value="SiC">SiC 碳化矽</option>
+          <option value="NiO">NiO 氧化鎳</option>
+        </select>
+      </section>
+
+      <section class="panel-section">
+        <div class="section-heading">
+          <span>製程參數</span>
+          <span id="materialBadge" class="material-badge">SiC</span>
+        </div>
+        <div id="controlPanel" class="control-panel">
+          <div class="skeleton-line"></div>
+          <div class="skeleton-line short"></div>
+          <div class="skeleton-line"></div>
+        </div>
+      </section>
+
+      <section class="panel-section compact">
+        <div class="status-card">
+          <span class="status-dot" id="statusDot"></span>
+          <div>
+            <p class="status-title" id="statusTitle">等待後端連線</p>
+            <p class="status-copy" id="statusCopy">FastAPI 會由 Electron 主進程啟動。</p>
+          </div>
+        </div>
+      </section>
+    </aside>
+
+    <main class="dashboard">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Gaussian Process Regression</p>
+          <h2>製程到電性的即時映射</h2>
+          <p class="hero-copy">
+            調整左側參數後，系統會呼叫 Python MLOps 後端，回傳平均預測值與 95% 信心區間。
+          </p>
+        </div>
+        <button id="refreshButton" class="ghost-button" type="button">重新整理</button>
+      </header>
+
+      <section class="section-block">
+        <div class="section-title-row">
+          <div>
+            <p class="eyebrow">Prescriptive AI</p>
+            <h3>推薦製程處方</h3>
+          </div>
+          <p class="muted">來自 Pareto frontier 的代表性 Sweet Spots</p>
+        </div>
+        <div id="recipesGrid" class="recipes-grid">
+          <article class="recipe-card loading-card">載入推薦處方中...</article>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-title-row">
+          <div>
+            <p class="eyebrow">Prediction Dashboard</p>
+            <h3>電性預測結果</h3>
+          </div>
+          <p id="lastUpdated" class="muted">尚未更新</p>
+        </div>
+        <div id="metricsGrid" class="metrics-grid">
+          <article class="metric-card loading-card">等待模型預測...</article>
+        </div>
+      </section>
+
+      <section class="section-block two-column">
+        <article class="insight-card">
+          <p class="eyebrow">Current Recipe</p>
+          <h3>目前輸入參數</h3>
+          <pre id="featurePreview" class="feature-preview">{}</pre>
+        </article>
+
+        <article class="insight-card">
+          <p class="eyebrow">Physical Reading</p>
+          <h3>模型狀態摘要</h3>
+          <p id="diagnosisText" class="diagnosis-text">
+            選擇材料並調整製程條件後，這裡會顯示目前預測是否具備低漏電、高開關比與穩定操作的趨勢。
+          </p>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>

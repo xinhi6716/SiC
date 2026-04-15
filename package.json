@@ -1,0 +1,21 @@
+{
+  "name": "rram-material-ml-electron",
+  "version": "0.1.0",
+  "description": "Electron shell for the multi-material RRAM MLOps prediction and optimization system.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [
+    "electron",
+    "fastapi",
+    "materials-science",
+    "rram",
+    "mlops"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^35.7.5"
+  }
+}
